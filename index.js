@@ -26,3 +26,12 @@ app.post('/hotel', async (req, res) => {
     }
 });
 
+app.get('/hotel', async (req, res) => {
+    try {
+        const hotel = await db.Hotel.findAll();
+        res.send(hotel);
+    } catch (error) {
+        res.status(500).send({message: error.message});
+    }
+});
+
